@@ -1,0 +1,12 @@
+Canard::Abilities.for(:Thirdpart) do
+
+  can [:create, :read, :update, :destroy], Doc
+  
+  
+  cannot [:create, :read, :update, :destroy], Note
+  
+  cannot [:create, :read, :update, :destroy], Post
+
+  can [:create, :read, :update, :destroy], Room
+  
+end

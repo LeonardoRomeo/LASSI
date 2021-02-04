@@ -1,0 +1,35 @@
+<a href="/">HomePage</a>  <a href="/rooms">BookYouRoom</a>  <a href="/notes">ShareYourNotes</a>  <a href="/docs">SearchDocs</a>  <a href="/posts">AskForSupport</a>
+
+
+
+<h2>IN QUESTA SEZIONE DELLA PIATTAFORMA SONO VISUALIZZATE TUTTE LE AULE MESSE A DISPOSIZIONE DALLE "THIRDPART"</h2>
+
+  <% @rooms.each do |room| %>
+
+  <ul>
+  <li><%= image_tag(room.foto)%></li>
+  <li><%= room.name %></li>
+  <li>
+      <td class="list_action">
+ 
+          <%= link_to 'Show', room %><br/>
+          <%= if can? :update, :room %> 
+          <%= link_to 'Edit', edit_room_path(room)%><br/>
+ 
+          <%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } %>
+ 
+       </td>
+  </li>
+  </ul>
+
+
+  <% end %>
+
+ 
+
+<br>
+
+<%= link_to 'New Room', new_room_path %>
+
+
+

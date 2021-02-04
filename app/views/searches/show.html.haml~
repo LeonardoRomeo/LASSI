@@ -1,0 +1,27 @@
+%h1 Search Results
+
+%p= link_to "Back", new_search_path
+
+- if @search.search_room.empty?
+  %p No Room were found.
+- else
+  %table
+    %thead
+      %tr
+        %th Name
+        %th Wifi
+        %th Prese
+        %th Riscaldamento
+        %th{:colspan => "3"}
+    %tbody
+      - @search.search_room.each do |room|
+        %tr
+          %td= room.name
+          %td= room.wifi
+          %td= room.prese
+          %td= room.riscaldamento
+          %td= link_to 'Show', room
+          %td= link_to 'Edit', edit_room_path(room)
+
+%p= link_to "Back", new_search_path
+          

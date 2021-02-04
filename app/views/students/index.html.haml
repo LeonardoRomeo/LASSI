@@ -1,0 +1,22 @@
+%p#notice= notice
+%h1 Students
+%table
+  %thead
+    %tr
+      %th Name
+      %th Surname
+      
+      %th Email
+      %th{:colspan => "3"}
+  %tbody
+    - @students.each do |student|
+      %tr
+        %td= student.name
+        %td= student.surname
+        
+        %td= student.email
+        %td= link_to 'Show', student
+        
+        %td= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+

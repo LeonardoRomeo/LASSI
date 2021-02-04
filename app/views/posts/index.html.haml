@@ -1,0 +1,33 @@
+.panel.panel-info
+  .panel-heading.color
+    %h1 AskForSupport
+
+- if can? :create, Post
+  .panel.panel-info
+    .panel-body
+      %strong      
+        = link_to 'Crea una nuova discussione', new_post_path
+        %br/
+
+
+%ul 
+  - @posts.each do |post|
+    
+    .panel.panel-info
+
+      .panel-heading.color
+        %h4.color
+          <i>#{post.title}</i>
+
+      .panel-body
+        %ul
+          
+          %p.text-secondary  Studente: <i>#{post.student.email}</i>
+          %p.text-secondary  <i>#{post.information}</i>
+        
+        
+          %p.text-secondary 
+            %strong
+              - if can? :read, Post 
+                = link_to 'Mostra', post 
+          

@@ -1,0 +1,57 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @room.name %>
+</p>
+
+<p>
+  <strong>Num posti tot:</strong>
+  <%= @room.num_posti_tot %>
+</p>
+
+<p>
+  <strong>Num posti liberi:</strong>
+  <%= @room.num_posti_liberi %>
+</p>
+
+<p>
+  <strong>H ape:</strong>
+  <%= @room.h_ape %>
+</p>
+
+<p>
+  <strong>H chiu:</strong>
+  <%= @room.h_chiu %>
+</p>
+
+<p>
+  <strong>Foto:</strong>
+  <%= @room.foto %>
+</p>
+
+<p>
+  <strong>Wifi:</strong>
+  <%= @room.wifi %>
+</p>
+
+<p>
+  <strong>Prese:</strong>
+  <%= @room.prese %>
+</p>
+
+<p>
+  <strong>Riscaldamento:</strong>
+  <%= @room.riscaldamento %>
+</p>
+
+<p>
+  <strong>Thirdpart:</strong>
+  <%= @room.thirdpart %>
+</p>
+
+<%= link_to 'Edit', edit_room_path(@room) %> |
+<%= link_to 'Back', rooms_path %>
+
+h1>You're logged in! Welcome to the Admin rooms!</h1>
+<%= link_to "Sign Out", destroy_admin_session_path %>

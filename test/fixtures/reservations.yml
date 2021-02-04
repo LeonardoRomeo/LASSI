@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  room: one
+  student: one
+  giorno: 2021-01-16
+
+two:
+  room: two
+  student: two
+  giorno: 2021-01-16

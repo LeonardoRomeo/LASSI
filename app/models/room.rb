@@ -1,0 +1,37 @@
+class Room < ApplicationRecord
+
+
+  belongs_to :student, :optional => true
+
+  has_many :reservations
+  has_many :students, :through => :reservations
+
+  has_one_attached :image
+
+  validates :name, :num_posti_tot, :num_posti_liberi, :h_ape, :h_chiu, presence: true
+  validates :name, uniqueness: true
+  
+
+  def self.search(search)
+    if search
+      where(["name LIKE ?","%#{search}%"])
+    else 
+      all
+    end
+  end
+
+
+  private 
+
+  #def self.build_search_hash(search, args = {})
+
+   # @search_hash = {:conditions => search.conditions,
+
+   #                 :page => args[:page],
+
+   #                 :per_page => args[:per_page]
+   #                }
+
+  #end
+
+end

@@ -1,0 +1,50 @@
+p id="notice"><%= notice %></p>
+
+<h1>BookYouRoom</h1>
+
+<table>
+
+    <% @rooms.each do |room| %>
+    <tr class="<%= cycle('list_line_odd', 'list_line_even')%>">
+
+       <td class="list_image">
+ 
+          <%= image_tag(room.foto)%>
+ 
+       </td>
+
+       <td class="list_description">
+ 
+       <dl>
+ 
+          <dt><%= room.name %></dt>
+ 
+          <dd><%= truncate(strip_tags(room.name), length: 980) %></dd>
+ 
+       </dl>
+ 
+       </td>
+ 
+       <td class="list_action">
+ 
+          <%= link_to 'Show', room %><br/>
+ 
+          <%= link_to 'Edit', edit_room_path(room) %><br/>
+ 
+          <%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } %>
+ 
+       </td>
+    </tr>
+
+
+  <% end %>
+
+ 
+</table>
+
+<br>
+
+<%= link_to 'New Room', new_room_path %>
+
+
+

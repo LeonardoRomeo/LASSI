@@ -1,0 +1,42 @@
+.panel.panel-info
+  .panel-heading.color
+    %h1 SearchDocs
+
+-if student_signed_in?
+  .panel.panel-info
+    .panel-heading.color
+      = label_tag :Cerca_documenti
+    .panel-body
+      = form_tag "/docs", method: "GET" do
+        
+        = text_field_tag :Cerca_documenti, params[:Cerca_documenti]
+        = submit_tag "Cerca"
+
+%ul 
+  - @docs.each do |doc|
+    - mail = ''
+    - u = Student.find_by_id(doc.student)
+    - if student_signed_in?
+      - mail = current_student.email
+    .panel.panel-info
+      .panel-heading.color
+        
+        %h4
+          <i>#{doc.name}</i>
+
+      .panel-body
+        %ul
+          %p.text-secondary  Argomento: <i>#{doc.argument}</i>
+          %p.text-secondary  File: <i>#{doc.pdf.filename}</i>
+          %p.text-secondary  Studente: <i>#{doc.student.email}</i>
+        
+        
+          %p.text-secondary #{if student_signed_in?; link_to 'Mostra', doc end}
+          %p.text-secondary #{if u.email==mail; link_to "Modifica", edit_doc_path(doc) end} 
+          %p.text-secondary #{if u.email==mail; link_to 'Elimina', doc, method: :delete, data: { confirm: 'Are you sure?' } end}
+
+
+         
+%br/
+- if can? :create, Doc
+  = link_to 'New Doc', new_doc_path

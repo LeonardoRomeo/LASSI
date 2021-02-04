@@ -1,0 +1,7 @@
+class LoginController < ActionController::Base
+
+  def new
+    render html: "prova"
+  end
+
+end

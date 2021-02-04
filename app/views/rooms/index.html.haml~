@@ -1,0 +1,57 @@
+.panel.panel-info
+  .panel-heading.color
+    %h1 BookYouRoom
+
+- if can? :create, Room
+  .panel.panel-info
+    .panel-body
+      %strong
+        =link_to "Crea nuova aula", new_room_path
+        %br/
+
+.panel.panel-info
+  .panel-heading.color
+    = label_tag :Cerca_appunti
+  .panel-body
+    = form_tag "/notes", method: "GET" do
+        
+      = text_field_tag :Cerca_appunti, params[:Cerca_appunti]
+      = select_tag "argument", options_for_select([ '','Matematica e Fisica','Informatica','Lettere Filosofia e Storia','Lingue','Giurisprudenza', 'Economia e Scienze Politiche'])
+      = submit_tag "Cerca"
+
+%ul
+  - @rooms.each do |room|
+    -if can? :update, Room
+      -link_to "Modifica Aula", edit_room_path(room)
+    
+    .panel.panel-info
+      
+      .panel-heading.color
+        %a{:href => room_path(room)}
+
+
+          %h4.color
+            Nome: <i>#{room.name}</i>
+      
+      
+      .panel-body
+        = image_tag (room.image), style: 'height:100%;width:auto;'
+        %ul
+      
+          %p.text-secondary Orario Apertura: <i>#{room.h_ape.hour}</i>:<i>#{room.h_ape.min}
+          %p.text-secondary Orario Chiusura: <i>#{room.h_chiu.hour}</i>:<i>#{room.h_chiu.min}
+          %p.text-secondary Posti totali: <i>#{room.num_posti_liberi}</i>
+           
+      
+       
+          -if student_signed_in?; 
+            = link_to "Prenota", new_room_reservation_path(room) 
+            %br/ 
+
+
+
+
+
+
+
+

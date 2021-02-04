@@ -1,0 +1,39 @@
+#spec/features/sign_in_spec.rb
+
+
+
+
+require 'capybara/rails'
+require 'rspec/rails'
+require 'capybara/rspec'
+require 'capybara/cucumber'
+
+
+
+feature "Signing in" do
+  
+  background do
+    Student.make(email: 'student@example.com', password: 'password')
+  end
+
+  scenario "Signing in with correct credentials" do
+    visit '/sessions/new'
+    within("#session") do
+      fill_in 'Email', with: 'student@example.com'
+      fill_in 'Password', with: 'password'
+    end
+    click_button 'Sign in'
+    expect(page).to have_content 'Success'
+  end
+  given(:other_user) { Student.make(email: 'otherstudent@example.com', password: 'not') }
+
+  scenario "Signing in as another student" do
+    visit '/sessions/new'
+    within("#session") do
+      fill_in 'Email', with: other_user.email
+      fill_in 'Password', with: other_user.password
+    end
+    click_button 'Sign in'
+    expect(page).to have_content 'Invalid email or password'
+  end
+end

@@ -1,0 +1,13 @@
+%p#notice= notice
+%p
+  %strong Room:
+  = @reservation.room.name
+%p
+  %strong Student:
+  = @reservation.student.name
+%p
+  %strong Giorno:
+  = @reservation.data
+= link_to 'Edit', edit_reservation_path(@reservation)
+|
+= link_to 'Back', reservations_path

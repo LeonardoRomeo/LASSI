@@ -1,0 +1,21 @@
+%h1 Advanced Search
+%br/
+= form_with model: @search do |f|
+  
+  = f.label :name
+  = f.text_field :name
+  %br/
+  %br/
+  WIFI
+  = f.check_box :wifi
+  %br/
+  PRESE CORRENTE
+  = f.check_box :prese
+  %br/
+  RISCALDAMENTI
+  = f.check_box :riscaldamento
+  %br/
+  %br/
+  = f.submit "Search"
+%p= link_to "Back", '/rooms'
+

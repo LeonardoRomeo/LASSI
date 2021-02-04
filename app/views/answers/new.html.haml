@@ -1,0 +1,8 @@
+%h1 New Comment
+
+= form_tag post_answers_path, :method => :post do
+
+  = label :answer, :comment, 'Rispondi'
+  = text_field :answer, :comment
+
+  = submit_tag 'Aggiungi commento'

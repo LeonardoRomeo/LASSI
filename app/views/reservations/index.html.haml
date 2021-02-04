@@ -1,0 +1,20 @@
+%p#notice= notice
+%h1 Reservations
+%table
+  %thead
+    %tr
+      %th Room
+      %th Student
+      %th Giorno
+      %th{:colspan => "3"}
+  %tbody
+    - @reservations.each do |reservation|
+      %tr
+        %td= reservation.room.name
+        %td= reservation.student.name
+        %td= reservation.giorno
+        %td= link_to 'Show', reservation
+        %td= link_to 'Edit', edit_reservation_path(reservation)
+        %td= link_to 'Destroy', reservation, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Reservation', new_reservation_path

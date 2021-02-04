@@ -1,0 +1,41 @@
+= form_with(model: room, local: true) do |form|
+  - if room.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(room.errors.count, "error")
+        prohibited this room from being saved:
+      %ul
+        - room.errors.full_messages.each do |message|
+          %li= message
+  .field
+    = form.label :name
+    = form.text_field :name
+  .field
+    = form.label :num_posti_tot
+    = form.number_field :num_posti_tot
+  .field
+    = form.label :num_posti_liberi
+    = form.number_field :num_posti_liberi
+  .field
+    = form.label :h_ape
+    = form.time_select :h_ape, :default => {:hour => '8', :minute => '30'}
+  .field
+    = form.label :h_chiu
+    = form.time_select :h_chiu, :default => {:hour => '18', :minute => '30'}
+  .field
+    = form.label :foto
+    = form.text_field :foto
+  .field
+    = form.label :wifi
+    = form.check_box :wifi
+  .field
+    = form.label :prese
+    = form.check_box :prese
+  .field
+    = form.label :riscaldamento
+    = form.check_box :riscaldamento
+  .field
+    = form.label :student
+    = form.hidden_field :student_id, :value => current_student.id
+  .actions
+    = form.submit

@@ -1,0 +1,95 @@
+%h2 Discussione n°: #{@post.id}
+
+.panel.panel-info
+
+  .panel-heading.color
+    %strong 
+      = @post.title
+    %br/
+    %strong Studente:
+    = @post.student.email.split('@')[0].split('.')[0].capitalize
+    %br/
+    %strong Email: 
+    <i>#{@post.student.email}</i>  
+    %br/
+    
+  .panel-body
+      
+  
+    %strong Quesito:
+    = @post.information
+
+- if student_signed_in?
+  - if @post.student_id == current_student.id 
+    .panel.panel-info  
+      .panel-heading
+        %strong
+          = link_to 'Modifica post', edit_post_path(@post) 
+
+- if student_signed_in?
+  - if current_student.roles_mask == 1 
+    .panel.panel-info  
+      .panel-heading
+        %strong
+          = link_to 'Modifica post', edit_post_path(@post)
+
+- if student_signed_in?
+  - if @post.student_id == current_student.id
+    .panel.panel-info  
+      .panel-heading
+        %strong
+          = link_to 'Elimina Post', @post, method: :delete, data: { confirm: 'Are you sure?' }
+
+- if student_signed_in?
+  - if current_student.roles_mask == 1
+    .panel.panel-info  
+      .panel-heading
+        %strong
+          = link_to 'Elimina Post', @post, method: :delete, data: { confirm: 'Are you sure?' } 
+
+
+%h3 Risposte:
+
+- if @post.answers.empty?
+  %p.text-secondary Non ci sono risposte a questa domanda...
+  %br/
+- else 
+  
+  - @post.answers.each do |r|
+    .panel.panel-info
+      .panel-heading.color 
+        %strong 
+          Studente: 
+          = r.student.email.split('@')[0].split('.')[0].capitalize  
+          %br/
+        %strong 
+          Email: 
+          = r.student.email
+          %br/ 
+      .panel-body    
+        %strong 
+          Risposta: 
+          = r.comment
+          %br/
+        - if student_signed_in?
+          - if r.student_id == current_student.id 
+            .panel.panel-info  
+              .panel-heading
+                %strong
+                  = link_to 'Elimina commento', post_answer_path(:id => r.id, :post_id => @post.id), method: :delete, data: { confirm: 'Are you sure?' }
+
+
+- if can? :create, Answer
+  .panel.panel-info  
+    .panel-heading
+      %strong
+        = link_to 'Rispondi', new_post_answer_path(@post) 
+        
+.panel.panel-info  
+  .panel-heading
+    %strong
+      = link_to 'Back', posts_path
+        
+
+        
+

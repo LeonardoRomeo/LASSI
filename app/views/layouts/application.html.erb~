@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Online Services for Students</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <%= yield %>
+    <br><br>
+    <% if student_signed_in? %>
+	Logged in as <%= current_student.email%> [<%= link_to 'Logout',
+	destroy_student_session_path, :method => :delete%>]
+    <% end %>
+    <% if thirdpart_signed_in? %>
+	Logged in as <%= current_thirdpart.email%> [<%= link_to 'Logout',
+	destroy_thirdpart_session_path, :method => :delete%>]
+    <% end %>
+    <% if admin_signed_in? %>
+	Logged in as <%= current_admin.email%> [<%= link_to 'Logout',
+	destroy_admin_session_path, :method => :delete%>]
+    <% end %>
+    <h4>Sign in</h4>
+    <a href="/students/sign_in">Sei uno Studente?</a><br>
+    <a href="/thirdparts/sign_in">Sei una THIRDPART?</a><br>
+    <a href="/admins/sign_in">Sei un ADMIN?</a><br>
+  
+  </body>
+</html>

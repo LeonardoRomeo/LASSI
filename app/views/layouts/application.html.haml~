@@ -1,0 +1,50 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Online Services for Students
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    %link{:href => "https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css", :rel => "stylesheet"}/
+    %script{:src => "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"}
+    %script{:src => "https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"}
+  
+   
+  %body
+    .notice
+      = h flash[:notice]
+
+    
+    .topnav
+      %a.active{:href => "/"} Home
+        
+      %a{:href => "/rooms"} BookYouRoom
+        
+      %a{:href => "/docs"} SearchDocs
+      
+      %a{:href => "/notes"} ShareYourNotes
+      
+      %a{:href => "/posts"} AskForSupport
+      
+      %a{:href => "/students/sign_in"} Sign in
+      
+      %a{:href => "/students/sign_up"} Sign up
+
+      -if student_signed_in?
+        
+        %a.right #{link_to 'Logout', destroy_student_session_path, :method => :delete}
+        
+        
+      
+    
+        
+    
+  
+    = yield
+    
+  
+ 
+  
+    %br/

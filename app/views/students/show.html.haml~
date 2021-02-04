@@ -1,0 +1,16 @@
+%p#notice= notice
+%p
+  %strong Name:
+  = @student.name
+%p
+  %strong Surname:
+  = @student.surname
+%p
+  %strong University:
+  = @student.university
+%p
+  %strong Email:
+  = @student.email
+= link_to 'Edit', edit_student_path(@student)
+|
+= link_to 'Back', students_path

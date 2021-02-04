@@ -1,0 +1,37 @@
+%h2 Details about #{@room.name}
+ 
+%ul#details
+	%li
+		Foto:
+		  image_tag(@room.foto)
+	%li
+		Posti totali:
+		= @room.num_posti_tot
+	%li
+		Posti liberi:
+		= @room.num_posti_liberi
+	%li
+		Orario apertura:
+		= @room.h_ape
+	%li
+		Orario chiusura:
+		= @room.h_chiu
+	%li
+		Wifi:
+		= @room.wifi
+	%li
+		Prese:
+		= @room.prese
+	%li
+		Riscaldamento:
+		= @room.riscaldamento
+
+
+
+<br/><br/>
+
+#{link_to 'Edit info', edit_room_path(@room)} - #{link_to 'Delete', room_path(@room), :method => :delete} - #{link_to 'Back to room list', rooms_path}
+
+
+
+

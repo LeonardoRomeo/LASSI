@@ -1,0 +1,25 @@
+<a href="/">HomePage</a>  <a href="/rooms">BookYouRoom</a>  <a href="/notes">ShareYourNotes</a>  <a href="/docs">SearchDocs</a>  <a href="/posts">AskForSupport</a>                                                               Sign in <a href="/students/sign_in">Sei uno Studente?</a><a href="/thirdparts/sign_in">Sei una THIRDPART?</a><a href="/admins/sign_in">Sei un ADMIN?</a>
+
+<h1>HOME PAGE</h1>
+<h2>Benvenuto su Online Services for Students una piattaforma online di risorse utili per lo studente</h2>
+<h3>BookYouRoom</h3>
+<h3>Sezione dedicata agli studenti per prenotare un posto in un'aula studio</h3>
+<a href="/rooms">Clicca per entrare in BookYouRoom</a>
+<br>
+<br>
+<h3>ShareYourNotes</h3>
+<h3>Sezione dedicata agli studenti per condividere i prpri appunti o scaricare quelli di qualcun'altro</h3>
+<a href="/notes">Clicca per entrare in ShareYourNotes</a>
+<br>
+<br>
+<h3>SearchDocs</h3>
+<h3>Sezione dedicata agli studenti per scaricare documenti offerti da terzeparti</h3>
+<a href="/docs">Clicca per entrare in SearchDocs</a>
+<br>
+<br>
+<h3>AskForSupport</h3>
+<h3>Sezione dedicata agli studenti per aprire una discussione riguardo un certo problema</h3>
+<a href="/posts">Clicca per entrare in AskForSupport</a>
+<br>
+<br>
+

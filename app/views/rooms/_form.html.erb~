@@ -1,0 +1,69 @@
+<%= form_with(model: room, local: true) do |form| %> 
+  
+  <% if room.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(room.errors.count, "error") %> prohibited this room from being saved:</h2>
+
+      <ul>
+      <% room.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :num_posti_tot %>
+    <%= form.number_field :num_posti_tot %>
+  </div>
+
+  <div class="field">
+    <%= form.label :num_posti_liberi %>
+    <%= form.number_field :num_posti_liberi %>
+  </div>
+
+  <div class="field">
+    <%= form.label :h_ape %>
+    <%= form.time_select :h_ape %>
+  </div>
+
+  <div class="field">
+    <%= form.label :h_chiu %>
+    <%= form.time_select :h_chiu %>
+  </div>
+
+  <div class="field">
+    <%= form.label :foto %>
+    <%= form.text_field :foto %>
+  </div>
+
+  <div class="field">
+    <%= form.label :wifi %>
+    <%= form.check_box :wifi %>
+  </div>
+
+  <div class="field">
+    <%= form.label :prese %>
+    <%= form.check_box :prese %>
+  </div>
+
+  <div class="field">
+    <%= form.label :riscaldamento %>
+    <%= form.check_box :riscaldamento %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :thirdpart %>
+    <%= form.hidden_field :thirdpart_id, :value => current_thirdpart.id %>
+  </div>
+  
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,50 @@
+%br/
+%br/
+.panel.panel-info
+
+  .panel-heading.color
+    = @note.nome
+ 
+  .panel-body
+    %strong Argument:
+    = @note.argument
+    %br/
+
+    %strong Student:
+    = @note.student.email
+    %br/
+    %strong File:
+    = @note.pdf.filename
+    %br/
+    %br/
+    %br/
+
+    %strong
+      - if student_signed_in?
+        = link_to 'Scarica appunti', rails_blob_path(@note.pdf, disposition: "attachment") 
+        %br/
+        
+    %strong
+      - if student_signed_in?
+        - if current_student.id == @note.student_id
+          = link_to 'Modifica appunti', edit_note_path(@note)
+          %br/
+    %strong
+      - if student_signed_in?
+        - if current_student.roles_mask == 1
+          = link_to 'Modifica appunti', edit_note_path(@note)
+          %br/
+
+    %strong 
+      - if student_signed_in?
+        - if current_student.id == @note.student_id
+          = link_to 'Elimina appunti', @note, method: :delete, data: { confirm: 'Are you sure?' }
+          %br/
+
+    %strong
+      - if student_signed_in?
+        - if current_student.roles_mask == 1
+          = link_to 'Elimina appunti', @note, method: :delete, data: { confirm: 'Are you sure?' }
+          %br/
+
+= link_to 'Back', notes_path

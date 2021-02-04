@@ -1,0 +1,55 @@
+.panel.panel-info
+  .panel-heading.color
+    %h1 ShareYourNotes
+
+
+.panel.panel-info
+  .panel-heading.color
+    = label_tag :Cerca_appunti
+  .panel-body
+    = form_tag "/notes", method: "GET" do
+        
+      = text_field_tag :Cerca_appunti, params[:Cerca_appunti]
+      = select_tag "argument", options_for_select([ '','Matematica e Fisica','Informatica','Lettere Filosofia e Storia','Lingue','Giurisprudenza', 'Economia e Scienze Politiche'])
+      = submit_tag "Cerca"
+
+  
+
+%br/
+
+
+
+- if can? :create, Note
+  .panel.panel-info
+    .panel-body
+      %strong
+        = link_to 'Aggiungi nuovi appunti', new_note_path
+        %br/
+
+%ul 
+  - @notes.each do |note|
+    
+    .panel.panel-info
+      .panel-heading.color
+          
+        %h4.color
+          <i>#{note.nome}</i>
+
+      .panel-body
+        %ul
+          %p.text-secondary  Argomento: <i>#{note.argument}</i>
+          %p.text-secondary  File: <i>#{note.pdf.filename}</i>
+          %p.text-secondary  Studente: <i>#{note.student.email}</i>
+        
+          %p.text-secondary 
+            %strong
+              - if can? :read, Note; 
+                = link_to 'Vedi Appunti', note 
+
+           
+
+          
+ 
+          
+%br/
+

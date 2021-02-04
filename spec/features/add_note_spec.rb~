@@ -1,0 +1,16 @@
+#spec/add_note_spec.rb
+
+require "capybara/rspec"
+require "add_note"
+
+describe AddNote do
+
+  context "when i visit the notes index" do
+    
+    it "it retu" do
+      
+    end
+    
+  end
+
+end

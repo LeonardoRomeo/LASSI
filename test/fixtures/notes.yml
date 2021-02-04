@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nome: MyString
+  argument: MyString
+  file: MyString
+  student: one
+
+two:
+  nome: MyString
+  argument: MyString
+  file: MyString
+  student: two

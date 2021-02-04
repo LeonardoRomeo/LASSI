@@ -1,0 +1,38 @@
+<%= form_with(model: doc, local: true) do |form| %>
+  <% if doc.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(doc.errors.count, "error") %> prohibited this doc from being saved:</h2>
+
+      <ul>
+      <% doc.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :argument %>
+    <%= form.text_field :argument %>
+  </div>
+
+  <div class="field">
+    <%= form.label :file %>
+    <%= form.text_field :file %>
+  </div>
+
+
+  <div class="field">
+    THIRDPART PROPRIETARIA :<%= form.label  :thirdpart, current_thirdpart.name %>
+    <%= form.hidden_field :thirdpart_name, :value => current_thirdpart.name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

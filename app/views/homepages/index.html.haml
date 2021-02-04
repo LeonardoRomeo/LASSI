@@ -1,0 +1,19 @@
+p id="notice"&gt;#{notice}
+%h1 BookYouRoom
+%table
+  - @rooms.each do |room|
+    %tr{:class => "#{cycle('list_line_odd', 'list_line_even')}"}
+      %td.list_image
+        = image_tag(room.foto)
+      %td.list_description
+        %dl
+          %dt= room.name
+          %dd= truncate(strip_tags(room.name), length: 980)
+      %td.list_action
+        = link_to 'Show', room
+        %br/
+        = link_to 'Edit', edit_room_path(room)
+        %br/
+        = link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Room', new_room_path

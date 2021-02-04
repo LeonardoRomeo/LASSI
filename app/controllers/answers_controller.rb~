@@ -1,0 +1,45 @@
+class AnswersController < ApplicationController
+
+  def new
+
+  end
+
+  def create 
+
+    post_id = params[:post_id]
+    student_id = current_student.id
+
+    @post= Post.find(post_id)
+    authorize! :create, @answer, :message => "ATTENZIONE non sei autorizzato a fare CREATE di una nuova Note"
+    @answer = Answer.new(params[:answer].permit(:comment,:post, :student))
+
+    @answer.post_id = post_id
+    @answer.student_id = student_id
+
+    @answer.save!
+
+    redirect_to post_path(@post)
+
+  end
+
+  def index
+    @post=Post.all
+  end
+
+  def destroy
+    id = params[:id]
+    id_post = params[:post_id]
+    @post = Post.find(id_post)
+    @answer = Answer.find(id)
+    @answer.destroy
+    flash[:notice] = "La tua risposta è stata cancellata"
+    redirect_to post_path(@post)
+  end
+  private 
+
+
+    def post_params
+      params.require(:answer).permit(:comment, :post_id, :student_id)
+    end
+
+end

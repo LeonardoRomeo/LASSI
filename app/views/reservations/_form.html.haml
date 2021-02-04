@@ -1,0 +1,13 @@
+= form_tag room_reservations_path, :method => :post do
+
+  = label :reservation, :data, "Data"
+  = date_select( :reservation, :data)
+  
+  %br/
+  %br/
+  %br/
+  = submit_tag 'Prenota'
+  %br/
+
+
+

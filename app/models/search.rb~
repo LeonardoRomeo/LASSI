@@ -1,0 +1,16 @@
+class Search < ApplicationRecord
+
+    def search_room
+        
+        rooms = Room.all 
+        if name.present?
+          rooms = Room.where("name LIKE ?",  :name)
+        end 
+        
+
+        return rooms
+    end
+
+
+
+end

@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  num_posti_tot: 1
+  num_posti_liberi: 1
+  h_ape: 2021-01-13 12:22:35
+  h_chiu: 2021-01-13 12:22:35
+  foto: MyString
+  wifi: false
+  prese: false
+  riscaldamento: false
+  thirdpart: one
+
+two:
+  name: MyString
+  num_posti_tot: 1
+  num_posti_liberi: 1
+  h_ape: 2021-01-13 12:22:35
+  h_chiu: 2021-01-13 12:22:35
+  foto: MyString
+  wifi: false
+  prese: false
+  riscaldamento: false
+  thirdpart: two

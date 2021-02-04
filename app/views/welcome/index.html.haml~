@@ -1,0 +1,37 @@
+
+
+= render 'cookies_eu/consent_banner'
+
+.container
+  %h2 Online Services for Students
+  #myCarousel.carousel.slide{"data-ride" => "carousel"}
+    / Indicators
+    %ol.carousel-indicators
+      %li.active{"data-slide-to" => "0", "data-target" => "#myCarousel"}
+      %li{"data-slide-to" => "1", "data-target" => "#myCarousel"}
+      %li{"data-slide-to" => "2", "data-target" => "#myCarousel"}
+      %li{"data-slide-to" => "3", "data-target" => "#myCarousel"}
+    / Wrapper for slides
+    .carousel-inner
+      
+      .item.active
+        %a{:href => "/rooms"} 
+          =image_tag "aula_studio.jpg" ,:class => "img"      
+      .item
+        %a{:href => "/docs"}
+          =image_tag "docs.png",:class => "img"
+      .item
+        %a{:href => "/notes"}
+          =image_tag "notes-1.png",:class => "img"
+      .item
+        %a{:href => "/posts"}
+          =image_tag "support.png",:class => "img"
+    / Left and right controls
+    %a.left.carousel-control{"data-slide" => "prev", :href => "#myCarousel"}
+      %span.glyphicon.glyphicon-chevron-left
+      %span.sr-only Previous
+    %a.right.carousel-control{"data-slide" => "next", :href => "#myCarousel"}
+      %span.glyphicon.glyphicon-chevron-right
+      %span.sr-only Next
+
+

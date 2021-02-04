@@ -1,0 +1,25 @@
+%p#notice= notice
+%p
+  %strong Name:
+  = @doc.name
+%p
+  %strong Argument:
+  = @doc.argument
+
+%p
+  %strong Thirdpart:
+  = @doc.student.email
+%p
+  %strong 
+  - if student_signed_in?
+    = link_to 'Scarica file', rails_blob_path(@doc.pdf, disposition: "attachment") 
+%p
+  %strong 
+  - if student_signed_in? && @doc.student == current_student
+    = link_to 'Modifica Documento', edit_doc_path(@doc)
+%p
+  %strong 
+  - if student_signed_in? && @doc.student == current_student
+    = link_to 'Elimina', @doc, method: :delete, data: { confirm: 'Are you sure?' }
+|
+= link_to 'Back', docs_path
